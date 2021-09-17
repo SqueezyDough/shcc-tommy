@@ -1,13 +1,16 @@
 const theme = {
   // fonts
   fonts: {
-    header: 'Heroic Condensed Medium, sans-serif',
-    body: 'Heroic Condensed Medium, sans-serif'
+    default: 'Futura, sans-serif',
+    medium: 'Heroic Condensed Medium, sans-serif',
+    bold: 'Heroic Condensed Bold, sans-serif',
+    heavy: 'Heroic Condensed Heavy, sans-serif',
+    black: 'Heroic Condensed Black, sans-serif',
   },
 
   // font sizes
   fontSize: {
-    xs: '12px',
+    xs: '14px',
     sm: '16px',
     md: '20px',
     lg: '25px',
@@ -37,9 +40,11 @@ const theme = {
 
   // colors
   colors: {
-    primary: '#000',
-    secondary: '#fff',
-    white: '#fff',
+    primary: '#012C5C',
+    secondary: '#FF1A3E',
+    steelBlue: '#757F9F',
+    white: '#FFF',
+    grey: '#EBEBEB',
     black: '#000',
   },
 

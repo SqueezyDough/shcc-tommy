@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { ThemeProvider } from 'styled-components'
 import GlobalStyle from '../styles/global'
-import Theme from '../styles/theme'
+import theme from '../styles/theme'
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -12,7 +12,7 @@ function MyApp({ Component, pageProps }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <ThemeProvider theme={Theme}>
+      <ThemeProvider theme={theme}>
         <GlobalStyle />
         <Component {...pageProps} />
       </ThemeProvider>

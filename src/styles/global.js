@@ -7,13 +7,13 @@ ${fonts}
 body {
   margin: 0;
   min-height: 100vh;
-  font-family: ${({ theme }) => theme.fonts.body};
+  font-family: ${({ theme }) => theme.fonts.default};
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   scroll-behavior: smooth;
   text-rendering: geometricPrecision;
-  overflow-x: hidden;
+  color: ${({ theme }) => theme.colors.primary};
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -32,7 +32,6 @@ ul {
 
 * {
   box-sizing: border-box;
-  cursor: none;
 }
 `
 

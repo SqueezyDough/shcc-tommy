@@ -22,4 +22,10 @@ export const fonts = `
     src: url("/fonts/heroiccondensed-black-webfont.ttf");
     font-display: swap;
   };
+
+  @font-face {
+    font-family: Futura;
+    src: url("/fonts/futura-book.ttf");
+    font-display: swap;
+  };
 `

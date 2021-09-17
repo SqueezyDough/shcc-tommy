@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import styled from 'styled-components'
-import HeartIcon from '../assets/HeartIcon'
+import HeartIcon from '../assets/heartIcon'
 import { TextSwipe } from '../fx'
 
 const Hero = ({ className }) => {
@@ -15,10 +15,7 @@ const Hero = ({ className }) => {
             <div>
               <span>L</span>
               <span className='hero__headline__heart'>
-                <HeartIcon
-                  width='350'
-                  height='400'
-                />
+                <HeartIcon />
               </span>
               <span>V</span>
               <span>E</span>

@@ -1,13 +1,16 @@
 import styled from 'styled-components'
 import Header from '../components/header'
 import Hero from '../components/hero'
+import { Fade } from '../fx'
 
 const Home = ({ className }) => {
   return (
     <>
       <Header />
       <main className={className}>
-        <Hero />
+        <Fade>
+          <Hero />
+        </Fade>
       </main>
     </>
   )

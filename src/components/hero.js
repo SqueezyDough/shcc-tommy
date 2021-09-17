@@ -18,7 +18,7 @@ const Hero = ({ className }) => {
                 <HeartIcon />
               </span>
               <span>V</span>
-              <span>E</span>
+              <span className='hero__headline__offset'>E</span>
               <span>.</span>
             </div>
             <abbr className='hero__headline__sub'>
@@ -92,6 +92,11 @@ margin-top: 64px;
     line-height: 24rem;
     letter-spacing: 4rem;
     z-index: 1;
+
+    // prevent element from covering background face
+    &__offset {
+      margin-left: 4rem;
+    }
 
     &__sub {
       position: absolute;

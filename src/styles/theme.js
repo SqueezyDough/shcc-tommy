@@ -16,7 +16,7 @@ const theme = {
     lg: '25px',
     xl: '30px',
     xxl: '48px',
-    xxxl: '164px'
+    xxxl: '450px'
   },
 
   // spacings

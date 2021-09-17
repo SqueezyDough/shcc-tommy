@@ -52,6 +52,4 @@ display: flex;
     }
   }
 }
-
-
 `

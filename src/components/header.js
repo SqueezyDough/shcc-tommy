@@ -45,6 +45,7 @@ export default styled(Header)`
 
   &__logo {
     margin-top: -12px;
+    margin-left: -17px;
   }
 
   &__search {

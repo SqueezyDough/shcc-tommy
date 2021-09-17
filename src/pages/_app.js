@@ -1,4 +1,7 @@
 import Head from 'next/head'
+import { ThemeProvider } from 'styled-components'
+import GlobalStyle from '../styles/global'
+import Theme from '../styles/theme'
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -8,7 +11,11 @@ function MyApp({ Component, pageProps }) {
         <title>SHCC - Tommy Hilfiger</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Component {...pageProps} />
+
+      <ThemeProvider theme={Theme}>
+        <GlobalStyle />
+        <Component {...pageProps} />
+      </ThemeProvider>
     </>
   )
 

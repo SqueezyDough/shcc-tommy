@@ -1,12 +1,15 @@
 import Image from 'next/image'
 import styled from 'styled-components'
 import HeartIcon from '../assets/HeartIcon'
+import { TextSwipe } from '../fx'
 
 const Hero = ({ className }) => {
   return (
     <article className={className}>
       <header className='hero'>
-        <small className='hero__small-text'>24/7 Live.</small>
+        <TextSwipe>
+          <small className='hero__small-text'>24/7 Live.</small>
+        </TextSwipe>
         <h1>
           <div>
             <span>L</span>
@@ -38,6 +41,7 @@ const Hero = ({ className }) => {
       <p>
         Engineered for perfect form and exceptional fit – whatever you do in them.
       </p>
+      <button>View all products</button>
       <div className='hero__banner'>
         <Image
           className='hero__banner__inner'

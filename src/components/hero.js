@@ -8,8 +8,8 @@ const Hero = ({ className }) => {
     <article className={className}>
       <section className='hero__section'>
         <header className='hero__header'>
-          <TextSwipe>
-            <small className='hero__small-text'>24/7 Live.</small>
+          <TextSwipe offset='15px'>
+            <span className='hero__small-text'>24/7 Live.</span>
           </TextSwipe>
           <h1 className='hero__headline'>
             <div>
@@ -80,6 +80,7 @@ margin-top: 64px;
     font-family: ${({ theme }) => theme.fonts.heavy};
     letter-spacing: .25rem;
     text-transform: uppercase;
+    line-height: 44px;
   }
 
   &__headline {
@@ -93,7 +94,7 @@ margin-top: 64px;
     letter-spacing: 4rem;
     z-index: 1;
 
-    // prevent element from covering background face
+    // prevent text from covering background face
     &__offset {
       margin-left: 4rem;
     }

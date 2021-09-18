@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
 
-const Swipe = ({ className, children, offset, delay = .5 }) => {
+const Swipe = ({ className, children, offset, delay = 0 }) => {
   return (
     <div className={className}>
       <motion.div

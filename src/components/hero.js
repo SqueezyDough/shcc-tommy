@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import styled from 'styled-components'
-import { Swipe, Glitch } from '../fx'
+import { Swipe, Glitch, FadeInItems } from '../fx'
 import HeartIcon from '../assets/heartIcon'
 
 const Hero = ({ className }) => {
@@ -8,25 +8,31 @@ const Hero = ({ className }) => {
     <article className={className}>
       <section className='hero__section'>
         <header className='hero__header'>
-          <Swipe offset='15px'>
+          <Swipe delay={1.5} offset='15px'>
             <span className='hero__small-text'>24/7 Live.</span>
           </Swipe>
           <h1 className='hero__headline'>
-            <div>
-              <span>L</span>
-              <span className='hero__headline__heart'>
-                <Glitch Component={HeartIcon} />
-              </span>
-              <span>V</span>
-              <span className='hero__headline__offset'>E</span>
-              <span>.</span>
+            <div className='hero__headline__top'>
+              <FadeInItems delay={1}>
+                <span>L</span>
+                <span className='hero__headline__heart'>
+                  <Glitch Component={HeartIcon} delay={2} />
+                </span>
+                <span>V</span>
+                <span className='hero__headline__offset'>E</span>
+                <span>.</span>
+              </FadeInItems>
             </div>
-            <abbr className='hero__headline__sub'>
-              <span>L</span>
-              <span>.</span>
-              <span>A</span>
-              <span>.</span>
-            </abbr>
+
+            <div className='hero__headline__bottom'>
+              <FadeInItems delay={1.5}>
+                <span>L</span>
+                <span>.</span>
+                <span>A</span>
+                <span>.</span>
+              </FadeInItems>
+            </div>
+
           </h1>
           <h2 className='hero__season'>
             <span>
@@ -89,18 +95,23 @@ margin-top: 64px;
     font-family: ${({ theme }) => theme.fonts.medium};
     font-size: ${({ theme }) => theme.fontSize.xxxl};
     color: ${({ theme }) => theme.colors.secondary};
-    white-space: nowrap;
     line-height: 24rem;
     letter-spacing: 4rem;
-    z-index: 1;
+    white-space: nowrap;
 
     // prevent text from covering background face
     &__offset {
       margin-left: 4.5rem;
     }
 
-    &__sub {
+    &__top {
+      position: relative;
+      z-index: 1;
+    }
+
+    &__bottom {
       position: absolute;
+      z-index: 1;
       transform: translateX(78%);
     }
 

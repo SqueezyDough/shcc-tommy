@@ -1,9 +1,9 @@
 import { motion } from 'framer-motion'
 
-const Glitch = ({ Component, offset = 20 }) => {
+const Glitch = ({ Component, offset = 20, delay = 0 }) => {
   const transitionConfig = {
-    duration: .01,
-    delay: .5,
+    duration: .005,
+    delay: delay,
     repeat: 1,
     repeatDelay: .2,
     repeatType: 'reverse',

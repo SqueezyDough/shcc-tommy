@@ -1,7 +1,9 @@
-import TextSwipe from './textSwipe'
+import Swipe from './swipe'
 import Fade from './fade'
+import Glitch from './glitch'
 
 export {
-  TextSwipe,
-  Fade
+  Swipe,
+  Fade,
+  Glitch
 }

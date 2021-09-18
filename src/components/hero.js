@@ -1,21 +1,21 @@
 import Image from 'next/image'
 import styled from 'styled-components'
+import { Swipe, Glitch } from '../fx'
 import HeartIcon from '../assets/heartIcon'
-import { TextSwipe } from '../fx'
 
 const Hero = ({ className }) => {
   return (
     <article className={className}>
       <section className='hero__section'>
         <header className='hero__header'>
-          <TextSwipe offset='15px'>
+          <Swipe offset='15px'>
             <span className='hero__small-text'>24/7 Live.</span>
-          </TextSwipe>
+          </Swipe>
           <h1 className='hero__headline'>
             <div>
               <span>L</span>
               <span className='hero__headline__heart'>
-                <HeartIcon />
+                <Glitch Component={HeartIcon} />
               </span>
               <span>V</span>
               <span className='hero__headline__offset'>E</span>
@@ -96,7 +96,7 @@ margin-top: 64px;
 
     // prevent text from covering background face
     &__offset {
-      margin-left: 4rem;
+      margin-left: 4.5rem;
     }
 
     &__sub {
@@ -105,10 +105,13 @@ margin-top: 64px;
     }
 
     &__heart {
-      margin-left: -90px;
+      margin-left: -95px;
       display: inline-block;
-      height: 331px;
-      width: 500px;
+
+      svg {
+        height: 331px;
+        width: 500px;
+      }
     }
   }
 

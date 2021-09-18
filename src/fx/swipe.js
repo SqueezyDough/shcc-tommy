@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
 
-const TextSwipe = ({ className, children, offset, delay = .5 }) => {
+const Swipe = ({ className, children, offset, delay = .5 }) => {
   return (
     <div className={className}>
       <motion.div
@@ -18,6 +18,6 @@ const TextSwipe = ({ className, children, offset, delay = .5 }) => {
   )
 }
 
-export default styled(TextSwipe)`
+export default styled(Swipe)`
   overflow: hidden;
 `

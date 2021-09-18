@@ -6,6 +6,7 @@ ${fonts}
 
 body {
   margin: 0;
+  padding-bottom: 100px;
   min-height: 100vh;
   font-family: ${({ theme }) => theme.fonts.default};
   line-height: 1.5;

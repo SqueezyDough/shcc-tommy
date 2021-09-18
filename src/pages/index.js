@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import Header from '../components/header'
 import Hero from '../components/hero'
+import Player from '../components/player'
 import { Fade } from '../fx'
 
 const Home = ({ className }) => {
@@ -10,6 +11,9 @@ const Home = ({ className }) => {
       <main className={className}>
         <Fade>
           <Hero />
+          <div className='promo-video'>
+            <Player path='/media/test-video.mp4' />
+          </div>
         </Fade>
       </main>
     </>
@@ -19,4 +23,8 @@ const Home = ({ className }) => {
 export default styled(Home)`
 margin: 0 auto;
 max-width: ${({ theme }) => theme.screens.xl};
+
+.promo-video {
+  margin-top: -2rem;
+}
 `

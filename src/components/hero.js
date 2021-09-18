@@ -1,7 +1,9 @@
 import Image from 'next/image'
 import styled from 'styled-components'
+import { motion } from 'framer-motion'
 import { Swipe, Glitch, FadeInItems } from '../fx'
 import HeartIcon from '../assets/heartIcon'
+import Button from '../components/button'
 
 const Hero = ({ className }) => {
   return (
@@ -34,11 +36,11 @@ const Hero = ({ className }) => {
             </div>
 
           </h1>
-          <h2 className='hero__season'>
-            <span>
+          <h2 className='hero__date'>
+            <span className='hero__date__season'>
               Spring
             </span>
-            <span>
+            <span className='hero__date__year'>
               2017
             </span>
           </h2>
@@ -46,20 +48,27 @@ const Hero = ({ className }) => {
             With Anwar Hadio & Sophia Richie
           </h3>
         </header>
-        <p>
+        <p className='description'>
           Engineered for perfect form and exceptional fit – whatever you do in them.
         </p>
-        <button>View all products</button>
+        <Button>
+          View all products
+        </Button>
       </section>
+
       <section className='hero__section'>
-        <div className='hero__banner'>
+        <motion.div
+          className='hero__banner'
+          initial={{width: '50%'}}
+          animate={{width: ['65%', '100%']}}
+        >
           <Image
             className='hero__banner__inner'
             src='/images/tommy-denim__header-men.jpg'
             alt='Men spring collection'
             layout='fill'
           />
-        </div>
+        </motion.div>
       </section>
     </article>
   )
@@ -67,14 +76,14 @@ const Hero = ({ className }) => {
 
 export default styled(Hero)`
 display: flex;
-margin-top: 64px;
+margin-top: 48px;
 
 .hero {
   &__section {
     width: 100%;
 
     &:first-of-type {
-      margin-top: 8rem;
+      margin-top: 7rem;
       padding-right: 60px;
       max-width: 290px;
     }
@@ -124,6 +133,32 @@ margin-top: 64px;
         width: 500px;
       }
     }
+  }
+
+  &__date {
+    margin: ${({ theme }) => theme.spacings.md} 0;
+    font-family: ${({ theme }) => theme.fonts.medium};
+    font-size: ${({ theme }) => theme.fontSize.xxl};
+    text-transform: uppercase;
+    line-height: 48px;
+    letter-spacing: .6rem;
+
+    &__season {
+      display: block;
+    }
+
+    &__year {
+      color: ${({ theme }) => theme.colors.secondary};
+    }
+  }
+
+  &__credit {
+    margin: ${({ theme }) => theme.spacings.sm} 0;
+    font-family: ${({ theme }) => theme.fonts.medium};
+    font-size: ${({ theme }) => theme.fontSize.lg};
+    text-transform: uppercase;
+    letter-spacing: .2rem;
+    line-height: 32px;
   }
 
   &__banner {

@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { motion } from 'framer-motion'
 import { Swipe, Glitch, FadeInItems } from '../fx'
 import HeartIcon from '../assets/heartIcon'
-import Button from '../components/button'
+import Button from './Button'
 
 const Hero = ({ className }) => {
   return (
@@ -59,13 +59,15 @@ const Hero = ({ className }) => {
       <section className='hero__section'>
         <motion.div
           className='hero__banner'
-          initial={{width: '50%'}}
+          initial={{width: '65%'}}
           animate={{width: ['65%', '100%']}}
         >
           <Image
             className='hero__banner__inner'
             src='/images/tommy-denim__header-men.jpg'
             alt='Men spring collection'
+            priority={true}
+            quality={100}
             layout='fill'
           />
         </motion.div>

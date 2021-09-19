@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import Header from '../components/Header'
 import Hero from '../components/Hero'
-import Player from '../components/Player'
+import Player from '../components/player/'
 import { FadeIn } from '../fx'
 
 const Home = ({ className }) => {

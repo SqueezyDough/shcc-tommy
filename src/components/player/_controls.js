@@ -2,9 +2,28 @@ import { motion } from 'framer-motion'
 import styled from 'styled-components'
 import PlayButtonIcon from '../../assets/playButtonIcon'
 
-const Controls = ({ className, handleClick }) => {
+const Controls = ({ className, isPlaying, handleClick }) => {
+  const container = {
+    play: {
+      backgroundColor: 'rgba(0, 0, 0, 0)',
+      transition: {
+        duration: .5,
+      }
+    },
+    pause: {
+      backgroundColor: 'rgba(0, 0, 0, .3)',
+      transition: {
+        duration: .5,
+      }
+    }
+  }
+
   const outer = {
+    play: {
+      opacity: 0,
+    },
     hover: {
+      opacity: 1,
       padding: 0,
       transition: {
         delayChildren: .15
@@ -13,25 +32,42 @@ const Controls = ({ className, handleClick }) => {
   }
 
   const inner = {
+    play: {
+      opacity: 0,
+    },
     hover: {
+      opacity: 1,
       scale: 2,
+    }
+  }
+
+  const icon = {
+    play: {
+      opacity: 0,
+    },
+    hover: {
+      opacity: 1,
     }
   }
 
   return (
     <motion.div
       className={className}
+      animate={ isPlaying ? 'play' : 'pause' }
+      variants={container}
     >
       <motion.div
         className='play-button'
         whileHover='hover'
+        animate={ isPlaying ? 'play' : 'pause' }
       >
         <motion.div className='play-button__outer'
-          initial={{ padding: 48 }}
+          initial={{ padding: 48, opacity: 1 }}
           variants={outer}
         >
           <motion.div className='play-button__inner'
             initial={{
+              opacity: 1,
               x: '-50%',
               y: '-50%'
             }}
@@ -41,6 +77,7 @@ const Controls = ({ className, handleClick }) => {
         <motion.div
             className='play-button__icon'
             onClick={handleClick}
+            variants={icon}
           >
           <PlayButtonIcon />
         </motion.div>
@@ -59,14 +96,12 @@ const centerContent = `
 export default styled(Controls)`
 width: 800px;
 height: 450px;
-background-color: rgba(0,0,0,.3);
 position: absolute;
 top: 50%;
 transform: translateY(-51%);
 
 .play-button {
   ${centerContent}
-  z-index: 10;
   cursor: pointer;
   width: 100px;
   height: 100px;

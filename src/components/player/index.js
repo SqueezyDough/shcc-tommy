@@ -1,13 +1,15 @@
-import { useState, useEffect } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import styled from 'styled-components'
 import Controls from './_controls'
 
 const Player = ({ className, path }) => {
-  const [playState, setPlayState] = useState()
+  const [isPlaying, setIsPlaying] = useState(false)
+  const ref = useRef()
 
   const handleClick = () => {
-    console.log('play')
+    isPlaying ? ref.current.pause() : ref.current.play()
+    setIsPlaying(!isPlaying)
   }
 
 
@@ -16,10 +18,10 @@ const Player = ({ className, path }) => {
       className={className}
     >
       <div className='player-container'>
-        <video width="800" height="520">
+        <video ref={ref} width="800" height="520">
           <source src={path} type="video/mp4" />
         </video>
-        <Controls state={playState} handleClick={handleClick} />
+        <Controls isPlaying={isPlaying} handleClick={handleClick} />
       </div>
     </motion.div>
   )

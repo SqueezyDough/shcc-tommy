@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { motion } from 'framer-motion'
 import { Swipe, Glitch, FadeInItems } from '../fx'
 import HeartIcon from '../assets/heartIcon'
-import Button from './Button'
+import Button from './button'
 
 const Hero = ({ className }) => {
   return (

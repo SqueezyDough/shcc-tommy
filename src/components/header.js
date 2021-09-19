@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import styled from 'styled-components'
-import Menu from '../components/menu'
+import Menu from './menu'
 import SearchIcon from '../assets/searchIcon'
 
 const Header = ({ className }) => {

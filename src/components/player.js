@@ -1,14 +1,18 @@
 import { motion } from 'framer-motion'
+import styled from 'styled-components'
 
-const Player = ({ path }) => {
+const Player = ({ className, path }) => {
   return (
     <motion.div
+      className={className}
     >
-      <video width="800" height="400">
+      <video width="800" height="520">
         <source src={path} type="video/mp4" />
       </video>
     </motion.div>
   )
 }
 
-export default Player
+export default styled(Player)`
+
+`

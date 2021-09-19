@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import styled from 'styled-components'
+import theme from '../../styles/theme'
 
 const Progressbar = ({ className, percent }) => {
   const ref = useRef()
@@ -25,12 +26,12 @@ const Progressbar = ({ className, percent }) => {
         <motion.circle
           ref={ref}
           className='progress-ring__circle'
-          stroke="white"
-          strokeWidth="4"
+          stroke={theme.colors.secondary}
+          strokeWidth="2"
           strokeDasharray={`${circumference} ${circumference}`}
-          strokeDashoffset={strokeDashOffset}
+          strokeDashoffset={strokeDashOffset || 0}
           fill='transparent'
-          r='52'
+          r='56'
           cx='60'
           cy='60'
         />
@@ -40,12 +41,10 @@ const Progressbar = ({ className, percent }) => {
 }
 
 export default styled(Progressbar)`
-background-color: #2962FF80;
 display: flex;
 align-items: center;
 justify-content: center;
 height: 100%;
-position: relative;
 
 .progress-ring {
   &__circle {

@@ -21,13 +21,11 @@ const Controls = ({ className, isPlaying, progress, handleClick }) => {
   }
 
   const outer = {
-    play: { opacity: 0 },
+    play: {
+      opacity: 0,
+    },
     hover: {
-      opacity: 1,
-      padding: 0,
-      transition: {
-        delayChildren: .15
-      }
+      scale: 0,
     }
   }
 
@@ -39,6 +37,19 @@ const Controls = ({ className, isPlaying, progress, handleClick }) => {
     }
   }
 
+  const button = {
+    pause: {
+      opacity: 0,
+    },
+    hover: {
+      opacity: 1,
+      transition: {
+        staggerChildren: .15
+      }
+    }
+  }
+
+  // Whats this??
   const icon = {
     play: { opacity: 0 },
     hover: { opacity: 1 }
@@ -50,26 +61,35 @@ const Controls = ({ className, isPlaying, progress, handleClick }) => {
       animate={ isPlaying ? 'play' : 'pause' }
       variants={container}
     >
-      <Progressbar percent={progress} />
-
       <motion.div
         className='play-button'
         whileHover='hover'
-        animate={ isPlaying ? 'play' : 'pause' }
+        variants={button}
+        animate={isPlaying ? {opacity: 0} : {}}
+        initial={{
+          opacity: 1,
+        }}
       >
-        <motion.div className='play-button__outer'
-          initial={{ padding: 48, opacity: 1 }}
-          variants={outer}
+        <motion.div
+          className='play-button__progression'
+          initial={{
+            scale: 1,
+          }}
+          variants={ isPlaying ? outer : {opacity: 0}}
+          animate={ isPlaying ? {opacity: 0} : {}}
         >
-          <motion.div className='play-button__inner'
-            initial={{
-              opacity: 1,
-              x: '-50%',
-              y: '-50%'
-            }}
-            variants={inner}
-          />
+          <Progressbar percent={progress} />
         </motion.div>
+
+        <motion.div className='play-button__inner'
+          initial={{
+            opacity: 1,
+            x: '-50%',
+            y: '-50%'
+          }}
+          variants={inner}
+        />
+
         <motion.div
           className='play-button__icon'
           onClick={handleClick}
@@ -77,9 +97,6 @@ const Controls = ({ className, isPlaying, progress, handleClick }) => {
         >
           {isPlaying ? (<PauseButtonIcon />) : (<PlayButtonIcon />)}
         </motion.div>
-
-        {/*  */}
-
       </motion.div>
     </motion.div>
   )
@@ -104,6 +121,10 @@ transform: translateY(-51%);
   cursor: pointer;
   width: 150px;
   height: 150px;
+
+  &__progression {
+    height: 100%;
+  }
 
   &__outer {
     ${centerContent}

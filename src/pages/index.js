@@ -2,19 +2,19 @@ import styled from 'styled-components'
 import Header from '../components/header'
 import Hero from '../components/hero'
 import Player from '../components/player/'
-import { FadeIn } from '../fx'
+import { Fade } from '../fx'
 
 const Home = ({ className }) => {
   return (
     <>
       <Header />
       <main className={className}>
-        <FadeIn>
+        <Fade>
           <Hero />
           <div className='promo-video'>
             <Player path='/media/test-video.mp4' />
           </div>
-        </FadeIn>
+        </Fade>
       </main>
     </>
   )

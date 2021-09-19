@@ -1,11 +1,11 @@
 import Swipe from './swipe'
-import FadeIn from './fadeIn'
+import Fade from './fade'
 import FadeInItems from './fadeInItems'
 import Glitch from './glitch'
 
 export {
   Swipe,
-  FadeIn,
+  Fade,
   FadeInItems,
   Glitch
 }

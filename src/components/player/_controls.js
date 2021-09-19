@@ -2,8 +2,9 @@ import { motion } from 'framer-motion'
 import styled from 'styled-components'
 import PlayButtonIcon from '../../assets/playButtonIcon'
 import PauseButtonIcon from '../../assets/pauseButtonIcon'
+import Progressbar from './_progressbar'
 
-const Controls = ({ className, isPlaying, handleClick }) => {
+const Controls = ({ className, isPlaying, progress, handleClick }) => {
   const container = {
     play: {
       backgroundColor: 'rgba(0, 0, 0, 0)',
@@ -49,6 +50,8 @@ const Controls = ({ className, isPlaying, handleClick }) => {
       animate={ isPlaying ? 'play' : 'pause' }
       variants={container}
     >
+      <Progressbar percent={progress} />
+
       <motion.div
         className='play-button'
         whileHover='hover'
@@ -74,6 +77,9 @@ const Controls = ({ className, isPlaying, handleClick }) => {
         >
           {isPlaying ? (<PauseButtonIcon />) : (<PlayButtonIcon />)}
         </motion.div>
+
+        {/*  */}
+
       </motion.div>
     </motion.div>
   )
@@ -101,8 +107,6 @@ transform: translateY(-51%);
 
   &__outer {
     ${centerContent}
-    width: 42px;
-    height: 42px;
     border: 2px solid ${({ theme }) => theme.colors.secondary};
     border-radius: 50%;
   }
@@ -121,12 +125,12 @@ transform: translateY(-51%);
     height: 42px;
     background-color: ${({ theme }) => theme.colors.secondary};
     border-radius: 50%;
-  }
 
-  svg {
-    ${centerContent}
-    width: 8px;
-    height: 8px;
+    svg {
+      ${centerContent}
+      width: 8px;
+      height: 8px;
+    }
   }
 }
 `

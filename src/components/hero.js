@@ -166,8 +166,7 @@ margin-top: 48px;
   &__banner {
     position: relative;
     height: 1095px;
-    width: 100%;
-    max-width: 1010px;
+    width: 1010px;
 
     &__inner {
       object-fit: cover;

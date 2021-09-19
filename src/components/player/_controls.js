@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import styled from 'styled-components'
 import PlayButtonIcon from '../../assets/playButtonIcon'
+import PauseButtonIcon from '../../assets/pauseButtonIcon'
 
 const Controls = ({ className, isPlaying, handleClick }) => {
   const container = {
@@ -19,9 +20,7 @@ const Controls = ({ className, isPlaying, handleClick }) => {
   }
 
   const outer = {
-    play: {
-      opacity: 0,
-    },
+    play: { opacity: 0 },
     hover: {
       opacity: 1,
       padding: 0,
@@ -32,9 +31,7 @@ const Controls = ({ className, isPlaying, handleClick }) => {
   }
 
   const inner = {
-    play: {
-      opacity: 0,
-    },
+    play: { opacity: 0 },
     hover: {
       opacity: 1,
       scale: 2,
@@ -42,12 +39,8 @@ const Controls = ({ className, isPlaying, handleClick }) => {
   }
 
   const icon = {
-    play: {
-      opacity: 0,
-    },
-    hover: {
-      opacity: 1,
-    }
+    play: { opacity: 0 },
+    hover: { opacity: 1 }
   }
 
   return (
@@ -75,11 +68,11 @@ const Controls = ({ className, isPlaying, handleClick }) => {
           />
         </motion.div>
         <motion.div
-            className='play-button__icon'
-            onClick={handleClick}
-            variants={icon}
-          >
-          <PlayButtonIcon />
+          className='play-button__icon'
+          onClick={handleClick}
+          variants={icon}
+        >
+          {isPlaying ? (<PauseButtonIcon />) : (<PlayButtonIcon />)}
         </motion.div>
       </motion.div>
     </motion.div>
@@ -103,8 +96,8 @@ transform: translateY(-51%);
 .play-button {
   ${centerContent}
   cursor: pointer;
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
 
   &__outer {
     ${centerContent}

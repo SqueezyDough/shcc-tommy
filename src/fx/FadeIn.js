@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 
-const Fade = ({ children, delay = 0 }) => {
+const FadeIn = ({ children, delay = 0 }) => {
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -15,4 +15,4 @@ const Fade = ({ children, delay = 0 }) => {
   )
 }
 
-export default Fade
+export default FadeIn

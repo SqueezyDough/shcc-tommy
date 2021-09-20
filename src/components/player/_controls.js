@@ -5,54 +5,40 @@ import PauseButtonIcon from '../../assets/pauseButtonIcon'
 import Progressbar from './_progressbar'
 
 const Controls = ({ className, isPlaying, progress, handleClick }) => {
+  // darken video on pause
   const container = {
-    play: {
-      backgroundColor: 'rgba(0, 0, 0, 0)',
-      transition: {
-        duration: .5,
-      }
-    },
-    pause: {
-      backgroundColor: 'rgba(0, 0, 0, .3)',
-      transition: {
-        duration: .5,
-      }
-    }
+    play: { backgroundColor: 'rgba(0, 0, 0, 0)' },
+    pause: { backgroundColor: 'rgba(0, 0, 0, .3)', }
   }
 
-  const outer = {
-    play: {
-      opacity: 0,
-    },
-    hover: {
-      scale: 0,
-    }
+  // show button on hover & stagger children
+  const button = {
+    play: {opacity: 0},
+    hover: { opacity: 1 }
   }
 
-  const inner = {
+  const progressionRing = {
+    play: { opacity: 0 }
+  }
+
+  const progressionRingPaused = {
+    hover: {scale: 0}
+  }
+
+  const buttonInner = {
+    play: { scale: 0 },
+    hover: { scale: 1 }
+  }
+
+  const innerRing = {
     play: { opacity: 0 },
     hover: {
       opacity: 1,
       scale: 2,
-    }
-  }
-
-  const button = {
-    pause: {
-      opacity: 0,
-    },
-    hover: {
-      opacity: 1,
       transition: {
-        staggerChildren: .15
+        delay: .15,
       }
     }
-  }
-
-  // Whats this??
-  const icon = {
-    play: { opacity: 0 },
-    hover: { opacity: 1 }
   }
 
   return (
@@ -65,37 +51,39 @@ const Controls = ({ className, isPlaying, progress, handleClick }) => {
         className='play-button'
         whileHover='hover'
         variants={button}
-        animate={isPlaying ? {opacity: 0} : {}}
         initial={{
           opacity: 1,
         }}
       >
         <motion.div
-          className='play-button__progression'
-          initial={{
-            scale: 1,
-          }}
-          variants={ isPlaying ? outer : {opacity: 0}}
-          animate={ isPlaying ? {opacity: 0} : {}}
+          className='play-button__inner'
+          animate={(isPlaying) ? 'play' : {}}
+          variants={buttonInner}
         >
-          <Progressbar percent={progress} />
-        </motion.div>
+          <motion.div
+            className='play-button__progression-ring'
+            initial={{scale: 1, opacity: 1}}
+            variants={ (!isPlaying && progress) ? progressionRing : progressionRingPaused }
+            animate={ isPlaying ? {opacity: 0} : {}}
+          >
+            <Progressbar percent={progress} />
+          </motion.div>
 
-        <motion.div className='play-button__inner'
-          initial={{
-            opacity: 1,
-            x: '-50%',
-            y: '-50%'
-          }}
-          variants={inner}
-        />
+          <motion.div className='play-button__inner-ring'
+            initial={{
+              opacity: 1,
+              x: '-50%',
+              y: '-50%'
+            }}
+            variants={innerRing}
+          />
 
-        <motion.div
-          className='play-button__icon'
-          onClick={handleClick}
-          variants={icon}
-        >
-          {isPlaying ? (<PauseButtonIcon />) : (<PlayButtonIcon />)}
+          <motion.div
+            className='play-button__icon'
+            onClick={handleClick}
+          >
+            {isPlaying ? (<PauseButtonIcon />) : (<PlayButtonIcon />)}
+          </motion.div>
         </motion.div>
       </motion.div>
     </motion.div>
@@ -122,24 +110,21 @@ transform: translateY(-51%);
   width: 150px;
   height: 150px;
 
-  &__progression {
+  &__inner {
+    position: relative;
+  }
+
+  &__progression-ring {
     height: 100%;
   }
 
-  &__outer {
-    ${centerContent}
-    border: 2px solid ${({ theme }) => theme.colors.secondary};
-    border-radius: 50%;
-  }
-
-  &__inner {
+  &__inner-ring {
     ${centerContent}
     width: 40px;
     height: 40px;
     background-color: ${({ theme }) => `${theme.colors.secondary}75`};
     border-radius: 50%;
   }
-
   &__icon {
     ${centerContent}
     width: 42px;

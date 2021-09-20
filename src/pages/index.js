@@ -9,8 +9,8 @@ const Home = ({ className }) => {
     <>
       <Header />
       <main className={className}>
-        <Fade>
-          <Hero />
+        <Hero />
+        <Fade delay={1}>
           <div className='promo-video'>
             <Player path='/media/test-video.mp4' />
           </div>
@@ -25,7 +25,7 @@ margin: 0 auto;
 max-width: ${({ theme }) => theme.screens.xl};
 
 .promo-video {
-  margin-top: -4.5rem;
+  margin-top: -4rem;
   transform: translateX(90px);
 }
 `

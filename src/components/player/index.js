@@ -1,9 +1,7 @@
 import { useState, useRef } from 'react'
-import { motion } from 'framer-motion'
-import styled from 'styled-components'
 import Controls from './_controls'
 
-const Player = ({ className, path }) => {
+const Player = ({ path }) => {
   const [isPlaying, setIsPlaying] = useState(false)
   const [progress, setProgress] = useState()
   const ref = useRef()
@@ -23,21 +21,13 @@ const Player = ({ className, path }) => {
   }
 
   return (
-    <motion.div
-      className={className}
-    >
-      <div className='player-container'>
-        <video ref={ref} width="800" height="520">
-          <source src={path} type="video/mp4" />
-        </video>
-        <Controls isPlaying={isPlaying} progress={progress} handleClick={handleClick} />
-      </div>
-    </motion.div>
+    <div >
+      <video ref={ref} width="800" height="520">
+        <source src={path} type="video/mp4" />
+      </video>
+      <Controls isPlaying={isPlaying} progress={progress} handleClick={handleClick} />
+    </div>
   )
 }
 
-export default styled(Player)`
-.player-container {
-  position: relative;
-}
-`
+export default Player

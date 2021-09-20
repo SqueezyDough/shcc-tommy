@@ -83,12 +83,12 @@ const Controls = ({ className, isPlaying, progress, handleClick }) => {
             variants={innerRing}
           />
 
-          <motion.div
+          <div
             className='play-button__icon'
             onClick={handleClick}
           >
             {isPlaying ? (<PauseButtonIcon />) : (<PlayButtonIcon />)}
-          </motion.div>
+          </div>
         </motion.div>
       </motion.div>
 

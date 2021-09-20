@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import PlayButtonIcon from '../../assets/playButtonIcon'
 import PauseButtonIcon from '../../assets/pauseButtonIcon'
 import Progressbar from './_progressbar'
+import { Swipe } from '../../fx'
 
 const Controls = ({ className, isPlaying, progress, handleClick }) => {
   // darken video on pause
@@ -17,19 +18,23 @@ const Controls = ({ className, isPlaying, progress, handleClick }) => {
     hover: { opacity: 1 }
   }
 
+  // hide on play
   const progressionRing = {
     play: { opacity: 0 }
   }
 
+  // hide when paused and on hover
   const progressionRingPaused = {
     hover: {scale: 0}
   }
 
+  // show or hide controls on hover
   const buttonInner = {
     play: { scale: 0 },
     hover: { scale: 1 }
   }
 
+  // show inner ring on hover
   const innerRing = {
     play: { opacity: 0 },
     hover: {
@@ -44,7 +49,7 @@ const Controls = ({ className, isPlaying, progress, handleClick }) => {
   return (
     <motion.div
       className={className}
-      animate={ isPlaying ? 'play' : 'pause' }
+      animate={isPlaying ? 'play' : 'pause'}
       variants={container}
     >
       <motion.div
@@ -86,6 +91,17 @@ const Controls = ({ className, isPlaying, progress, handleClick }) => {
           </motion.div>
         </motion.div>
       </motion.div>
+
+      {/* Show 'Resume' on pause */}
+      {!isPlaying && progress ? (
+        <Swipe
+          className='resume-video-label'
+          offset={9}
+        >
+          Resume
+        </Swipe>
+      ) : (null)
+    }
     </motion.div>
   )
 }
@@ -138,5 +154,16 @@ transform: translateY(-51%);
       height: 8px;
     }
   }
+}
+
+.resume-video-label {
+  ${centerContent}
+  top: 70%;
+  font-family: ${({ theme }) => theme.fonts.bold};
+  font-size: ${({ theme }) => theme.fontSize.md};
+  text-transform: uppercase;
+  letter-spacing: .2rem;
+  color: ${({ theme }) => theme.colors.white};
+  user-select: none;
 }
 `

@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import Header from '../components/header'
 import Hero from '../components/hero'
 import Player from '../components/player/'
+import theme from '../styles/theme'
 import { Fade, Blinds } from '../fx'
 
 const Home = ({ className }) => {
@@ -21,6 +22,7 @@ const Home = ({ className }) => {
               height='80px'
               targetWidth='520px'
               delay='.15'
+              color={theme.colors.lightGrey}
               reverse
               asBackground
             />
@@ -28,6 +30,7 @@ const Home = ({ className }) => {
               offsetY='180px'
               offsetX='200px'
               height='360px'
+              color={theme.colors.lightGrey}
               reverse
               asBackground
             />

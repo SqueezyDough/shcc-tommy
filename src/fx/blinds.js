@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import styled from 'styled-components'
+import theme from '../styles/theme'
 
 const Blinds = ({
   className,
@@ -9,6 +10,7 @@ const Blinds = ({
   initialWidth = '0',
   targetWidth = '100%',
   delay = 0,
+  color = theme.colors.white,
   reverse,
   asBackground,
 }) => {
@@ -29,6 +31,7 @@ const Blinds = ({
         height: height,
         width: initialWidth,
         zIndex: asBackground ? '-1' : '20',
+        backgroundColor: color
       }}
       animate={{
         width: targetWidth === '100%' ? `calc(100% - ${offsetX})` : targetWidth,
@@ -44,5 +47,4 @@ const Blinds = ({
 export default styled(Blinds)`
 position: absolute;
 top: 0;
-background-color: ${({ theme }) => theme.colors.lightGrey};
 `

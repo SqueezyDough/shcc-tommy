@@ -14,8 +14,7 @@ const Player = ({ path }) => {
         if (!video.paused) {
           video.pause()
           setIsPlaying(false)
-          // update progress
-          getProgress(video)
+          updateProgress(video)
         }
       })
     }, {threshold: .5})
@@ -26,13 +25,10 @@ const Player = ({ path }) => {
   const handleClick = () => {
     isPlaying ? ref.current.pause() : ref.current.play()
     setIsPlaying(!isPlaying)
-
-    if(isPlaying) {
-      getProgress(ref.current)
-    }
+    updateProgress(ref.current)
   }
 
-  const getProgress = video => {
+  const updateProgress = video => {
     const percentage = (video.currentTime / video.duration * 100)
     setProgress(percentage)
   }

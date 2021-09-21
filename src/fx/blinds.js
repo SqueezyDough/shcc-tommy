@@ -14,7 +14,6 @@ const Blinds = ({
   reverse,
   asBackground,
 }) => {
-
   // animation starts right or left from parent
   const starts = reverse ? 'right' : 'left'
   // invert offset when animation should reverse

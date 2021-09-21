@@ -1,31 +1,30 @@
 import { useState, useEffect, useRef } from 'react'
+import { useInView } from 'react-intersection-observer'
 import Controls from './_controls'
 
 const Player = ({ path }) => {
   const [isPlaying, setIsPlaying] = useState(false)
   const [progress, setProgress] = useState()
-  const ref = useRef()
+  const videoRef = useRef()
+
+  const { ref, inView } = useInView({
+    threshold: .5
+  })
 
   // Auto-pause video when outside viewport
   useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      const video = ref.current
-      entries.forEach(entry => {
-        if (!video.paused) {
-          video.pause()
-          setIsPlaying(false)
-          updateProgress(video)
-        }
-      })
-    }, {threshold: .5})
-
-    observer.observe(ref.current)
-  }, [])
+    const video = videoRef.current
+    if (!video.paused && !inView) {
+      video.pause()
+      setIsPlaying(false)
+      updateProgress(video)
+    }
+  }, [inView])
 
   const handleClick = () => {
-    isPlaying ? ref.current.pause() : ref.current.play()
+    isPlaying ? videoRef.current.pause() : videoRef.current.play()
     setIsPlaying(!isPlaying)
-    updateProgress(ref.current)
+    updateProgress(videoRef.current)
   }
 
   const updateProgress = video => {
@@ -34,8 +33,8 @@ const Player = ({ path }) => {
   }
 
   return (
-    <div >
-      <video ref={ref} width="800" height="520">
+    <div ref={ref}>
+      <video ref={videoRef} width="800" height="520">
         <source src={path} type="video/mp4" />
       </video>
       <Controls isPlaying={isPlaying} progress={progress} handleClick={handleClick} />

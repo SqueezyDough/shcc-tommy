@@ -18,7 +18,7 @@ const Hero = ({ className }) => {
                 <FadeInItems delay={1}>
                   <span>L</span>
                   <span className='hero__headline__heart'>
-                    <Glitch Component={HeartIcon} delay={2} />
+                    <Glitch Component={HeartIcon} delay={1.5} />
                   </span>
                   <span>V</span>
                   <span className='hero__headline__offset'>E</span>

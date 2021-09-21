@@ -8,7 +8,7 @@ import { Fade, Blinds } from '../fx'
 
 const Home = ({ className }) => {
   const { ref, inView } = useInView({
-    threshold: 0
+    threshold: .2
   })
 
   return (

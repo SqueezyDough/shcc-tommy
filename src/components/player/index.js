@@ -6,12 +6,12 @@ const Player = ({ path }) => {
   const [progress, setProgress] = useState()
   const ref = useRef()
 
-  // Auto-pause video when out of viewport
+  // Auto-pause video when outside viewport
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       const video = ref.current
       entries.forEach(entry => {
-        if (entry.intersectionRatio != 1 && !video.paused) {
+        if (!video.paused) {
           video.pause()
           setIsPlaying(false)
           // update progress

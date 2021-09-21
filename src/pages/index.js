@@ -8,17 +8,32 @@ const Home = ({ className }) => {
   return (
     <>
       <Header />
-      <main className={className}>
-        <Hero />
-        <div className='video-container'>
-          <Fade delay={1}>
+      <Fade>
+        <main className={className}>
+          <Hero />
+          <div className='video-container'>
             <div className='promo-video'>
               <Player path='/media/test-video.mp4' />
             </div>
-            <Blinds />
-          </Fade>
-        </div>
-      </main>
+            <Blinds
+              offsetY='100px'
+              offsetX='200px'
+              height='80px'
+              targetWidth='520px'
+              delay='.15'
+              reverse
+              asBackground
+            />
+            <Blinds
+              offsetY='180px'
+              offsetX='200px'
+              height='360px'
+              reverse
+              asBackground
+            />
+          </div>
+        </main>
+      </Fade>
     </>
   )
 }

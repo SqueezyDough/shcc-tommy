@@ -3,25 +3,38 @@ import styled from 'styled-components'
 
 const Blinds = ({
   className,
-  offsetY,
-  offsetX = '200px',
-  direction,
+  offsetX = '0',
+  offsetY = '0',
   height = '100px',
-  delay = 0 }) => {
+  initialWidth = '0',
+  targetWidth = '100%',
+  delay = 0,
+  reverse,
+  asBackground,
+}) => {
+
+  // animation starts right or left from parent
+  const starts = reverse ? 'right' : 'left'
+  // invert offset when animation should reverse
+  const sign = reverse ? '-' : ''
 
   return (
     <motion.div
       className={className}
-      initial={{
-        zIndex: '-1',
-        width: 0
+      initial={
+      {
+        [starts]: 0,
+        x: `${sign}${offsetX}`,
+        y: offsetY,
+        height: height,
+        width: initialWidth,
+        zIndex: asBackground ? '-1' : '20',
       }}
       animate={{
-        y: '100%',
-        x: `-${offsetX}`,
-        width: `calc(100% - ${offsetX})`,
+        width: targetWidth === '100%' ? `calc(100% - ${offsetX})` : targetWidth,
         transition: {
           duration: 2,
+          delay: delay,
         }
       }}
     />
@@ -31,7 +44,5 @@ const Blinds = ({
 export default styled(Blinds)`
 position: absolute;
 top: 0;
-right: 0;
-height: 100px;
-background-color: ${({ theme }) => theme.colors.lightGrey};;
+background-color: ${({ theme }) => theme.colors.lightGrey};
 `

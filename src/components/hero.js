@@ -1,80 +1,76 @@
 import Image from 'next/image'
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
-import { Swipe, Glitch, Fade, FadeInItems } from '../fx'
+import { Swipe, Glitch, FadeInItems } from '../fx'
 import HeartIcon from '../assets/heartIcon'
 import Button from './button'
 
 const Hero = ({ className }) => {
   return (
     <article className={className}>
-        <section className='hero__section'>
-          <Fade>
-            <header className='hero__header'>
-              <Swipe delay={1.5} offset='15px'>
-                <span className='hero__small-text'>24/7 Live.</span>
-              </Swipe>
-              <h1 className='hero__headline'>
-                <div className='hero__headline__top'>
-                  <FadeInItems delay={1}>
-                    <span>L</span>
-                    <span className='hero__headline__heart'>
-                      <Glitch Component={HeartIcon} delay={2} />
-                    </span>
-                    <span>V</span>
-                    <span className='hero__headline__offset'>E</span>
-                    <span>.</span>
-                  </FadeInItems>
-                </div>
+      <section className='hero__section'>
+          <header className='hero__header'>
+            <Swipe delay={1.5} offset='15px'>
+              <span className='hero__small-text'>24/7 Live.</span>
+            </Swipe>
+            <h1 className='hero__headline'>
+              <div className='hero__headline__top'>
+                <FadeInItems delay={1}>
+                  <span>L</span>
+                  <span className='hero__headline__heart'>
+                    <Glitch Component={HeartIcon} delay={2} />
+                  </span>
+                  <span>V</span>
+                  <span className='hero__headline__offset'>E</span>
+                  <span>.</span>
+                </FadeInItems>
+              </div>
 
-                <div className='hero__headline__bottom'>
-                  <FadeInItems delay={1.5}>
-                    <span>L</span>
-                    <span>.</span>
-                    <span>A</span>
-                    <span>.</span>
-                  </FadeInItems>
-                </div>
+              <div className='hero__headline__bottom'>
+                <FadeInItems delay={1.5}>
+                  <span>L</span>
+                  <span>.</span>
+                  <span>A</span>
+                  <span>.</span>
+                </FadeInItems>
+              </div>
 
-              </h1>
-              <h2 className='hero__date'>
-                <span className='hero__date__season'>
-                  Spring
-                </span>
-                <span className='hero__date__year'>
-                  2017
-                </span>
-              </h2>
-              <h3 className='hero__credit'>
-                With Anwar Hadio & Sophia Richie
-              </h3>
-            </header>
-            <p className='description'>
-              Engineered for perfect form and exceptional fit – whatever you do in them.
-            </p>
-            <Button>
-              View all products
-            </Button>
-          </Fade>
+            </h1>
+            <h2 className='hero__date'>
+              <span className='hero__date__season'>
+                Spring
+              </span>
+              <span className='hero__date__year'>
+                2017
+              </span>
+            </h2>
+            <h3 className='hero__credit'>
+              With Anwar Hadio & Sophia Richie
+            </h3>
+          </header>
+          <p className='description'>
+            Engineered for perfect form and exceptional fit – whatever you do in them.
+          </p>
+          <Button>
+            View all products
+          </Button>
         </section>
 
         <section className='hero__section'>
-          <Fade delay={.5}>
-            <motion.div
-              className='hero__banner'
-              initial={{width: '65%'}}
-              animate={{width: ['65%', '100%']}}
-            >
-              <Image
-                className='hero__banner__inner'
-                src='/images/tommy-denim__header-men.jpg'
-                alt='Men spring collection'
-                priority={true}
-                quality={100}
-                layout='fill'
-              />
-            </motion.div>
-          </Fade>
+          <motion.div
+            className='hero__banner'
+            initial={{width: '65%'}}
+            animate={{width: ['65%', '100%']}}
+          >
+            <Image
+              className='hero__banner__inner'
+              src='/images/tommy-denim__header-men.jpg'
+              alt='Men spring collection'
+              priority={true}
+              quality={100}
+              layout='fill'
+            />
+          </motion.div>
         </section>
     </article>
   )

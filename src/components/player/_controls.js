@@ -12,12 +12,6 @@ const Controls = ({ className, isPlaying, progress, handleClick }) => {
     pause: { backgroundColor: 'rgba(0, 0, 0, .3)', }
   }
 
-  // show button on hover & stagger children
-  const button = {
-    play: {opacity: 0},
-    hover: { opacity: 1 }
-  }
-
   // hide on play
   const progressionRing = {
     play: { opacity: 0 }
@@ -55,10 +49,6 @@ const Controls = ({ className, isPlaying, progress, handleClick }) => {
       <motion.div
         className='play-button'
         whileHover='hover'
-        variants={button}
-        initial={{
-          opacity: 1,
-        }}
       >
         <motion.div
           className='play-button__inner'

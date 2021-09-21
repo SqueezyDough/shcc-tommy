@@ -23,7 +23,7 @@ const Progressbar = ({ className, percent }) => {
     show: {
       opacity: 1,
       rotate: (percent / 100 * 360) || 0,
-      // Compensate radius difference for rotation
+      // Compensate radius difference for rotation animation
       transition: {
         delay: .075
       }

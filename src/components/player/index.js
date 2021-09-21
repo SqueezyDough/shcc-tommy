@@ -1,10 +1,27 @@
-import { useState, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Controls from './_controls'
 
 const Player = ({ path }) => {
   const [isPlaying, setIsPlaying] = useState(false)
   const [progress, setProgress] = useState()
   const ref = useRef()
+
+  // Auto-pause video when out of viewport
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      const video = ref.current
+      entries.forEach(entry => {
+        if (entry.intersectionRatio != 1 && !video.paused) {
+          video.pause()
+          setIsPlaying(false)
+          // update progress
+          getProgress(video)
+        }
+      })
+    }, {threshold: .5})
+
+    observer.observe(ref.current)
+  }, [])
 
   const handleClick = () => {
     isPlaying ? ref.current.pause() : ref.current.play()

@@ -45,6 +45,7 @@ const theme = {
     steelBlue: '#757F9F',
     white: '#FFF',
     grey: '#EBEBEB',
+    lightGrey: '#F9F9F9',
     black: '#000',
   },
 

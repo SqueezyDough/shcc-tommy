@@ -37,6 +37,7 @@ const Blinds = ({
         transition: {
           duration: 2,
           delay: delay,
+          ease: 'easeOut'
         }
       }}
     />

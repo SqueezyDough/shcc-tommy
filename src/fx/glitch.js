@@ -1,5 +1,4 @@
-import { motion, useAnimation } from 'framer-motion'
-import { useState, useEffect } from 'react'
+import { motion } from 'framer-motion'
 import theme from '../styles/theme'
 
 const Glitch = ({ Component, offset = 20, delay = 0 }) => {

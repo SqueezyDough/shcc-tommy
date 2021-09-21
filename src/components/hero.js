@@ -1,8 +1,8 @@
 import Image from 'next/image'
 import styled from 'styled-components'
-import { motion } from 'framer-motion'
-import { Swipe, Glitch, FadeInItems } from '../fx'
+import { Swipe, Glitch, FadeInItems, Blinds } from '../fx'
 import HeartIcon from '../assets/heartIcon'
+import theme from '../styles/theme'
 import Button from './button'
 
 const Hero = ({ className }) => {
@@ -56,21 +56,42 @@ const Hero = ({ className }) => {
           </Button>
         </section>
 
-        <section className='hero__section'>
-          <motion.div
-            className='hero__banner'
-            initial={{width: '65%'}}
-            animate={{width: ['65%', '100%']}}
-          >
-            <Image
-              className='hero__banner__inner'
-              src='/images/tommy-denim__header-men.jpg'
-              alt='Men spring collection'
-              priority={true}
-              quality={100}
-              layout='fill'
-            />
-          </motion.div>
+        <section className='hero__section hero__banner'>
+          <Image
+            className='hero__banner__inner'
+            src='/images/tommy-denim__header-men.jpg'
+            alt='Men spring collection'
+            priority={true}
+            quality={100}
+            layout='fill'
+          />
+          <Blinds
+            offsetY='0px'
+            offsetX='0px'
+            height='400px'
+            initialWidth='50%'
+            targetWidth='90px'
+            reverse
+            color={theme.colors.white}
+          />
+          <Blinds
+            offsetY='340px'
+            offsetX='0px'
+            height='60px'
+            initialWidth='50%'
+            targetWidth='90px'
+            reverse
+            color={theme.colors.lightGrey}
+          />
+          <Blinds
+            offsetY='0'
+            offsetX='0px'
+            height='100%'
+            initialWidth='25%'
+            targetWidth='0'
+            reverse
+            color={theme.colors.white}
+          />
         </section>
     </article>
   )

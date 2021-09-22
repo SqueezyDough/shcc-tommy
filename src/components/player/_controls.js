@@ -6,7 +6,7 @@ import Progressbar from './_progressbar'
 import { Swipe } from '../../fx'
 
 const Controls = ({ className, isPlaying, progress, handleClick }) => {
-  // darken video on pause
+  // apply a darkened overlay on pause
   const container = {
     play: { backgroundColor: 'rgba(0, 0, 0, 0)' },
     pause: { backgroundColor: 'rgba(0, 0, 0, .3)', }
@@ -46,6 +46,7 @@ const Controls = ({ className, isPlaying, progress, handleClick }) => {
       animate={isPlaying ? 'play' : 'pause'}
       variants={container}
     >
+      {/* Wrapper div to make sure dimensions are always the same regardless of state */}
       <motion.div
         className='play-button'
         whileHover='hover'
